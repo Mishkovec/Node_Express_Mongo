@@ -5,6 +5,13 @@ const app = express()
 
 const products = ['Apple', 'Banana', 'Grape']
 
+app.use((req, res, next) => {
+    console.log("Date", new Date(), 'Method', req.method, 'URL', req.originalUrl, 'Ip', req.ip)
+    next()
+})
+
+app.use('/static', express.static(__dirname + '/public'))
+
 app.get('/', (req, res, next) => {
     res.send('EX Work')
 })
@@ -42,6 +49,12 @@ app.get('/downloadBoks', (req, res) => {
 })
 
 app.use('/books', booksRouter)
+
+app.use((err, req, res, next) => {
+    console.log(err.status)
+    res.status(500).send(err.stack)
+})
+
 app.listen(5000, () => {
     console.log('start', new Date())
 })
