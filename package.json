@@ -17,6 +17,9 @@
   },
   "homepage": "https://github.com/Mishkovec/Node_Express_Mongo#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "hbs": "^4.1.1",
+    "pug": "^3.0.0"
   }
 }

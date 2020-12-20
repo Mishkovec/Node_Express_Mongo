@@ -3,6 +3,11 @@ const booksRouter = express.Router()
 
 const app = express()
 
+// app.set('view engine', 'pug')
+// app.set('view engine', 'ejs')
+app.set('view engine', 'hbs')
+app.set('views', './views')
+
 const products = ['Apple', 'Banana', 'Grape']
 
 app.use((req, res, next) => {
@@ -45,6 +50,30 @@ app.get('/blog', (req, res) => {
 app.get('/downloadBoks', (req, res) => {
     res.download('./public/books.html', 'anyFileName', (err) => {
         console.log('file sent')
+    })
+})
+
+app.get('/pug', (req, res, next) => {
+    res.render('main', {
+        title: 'Products',
+        message: 'Products List',
+        products
+    })
+})
+
+app.get('/ejs', (req, res, next) => {
+    res.render('main', {
+        title: 'Products',
+        message: 'Products List',
+        products
+    })
+})
+
+app.get('/hbs', (req, res, next) => {
+    res.render('main', {
+        title: 'Products',
+        message: 'Products List',
+        products
     })
 })
 
