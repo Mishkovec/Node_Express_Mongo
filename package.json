@@ -1,25 +1,26 @@
 {
-  "name": "node_express_mongo",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Mishkovec/Node_Express_Mongo.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Mishkovec/Node_Express_Mongo/issues"
-  },
-  "homepage": "https://github.com/Mishkovec/Node_Express_Mongo#readme",
-  "dependencies": {
-    "ejs": "^3.1.5",
-    "express": "^4.17.1",
-    "hbs": "^4.1.1",
-    "pug": "^3.0.0"
-  }
+    "name": "node_express_mongo",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js",
+        "dev": "nodemon index.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Mishkovec/Node_Express_Mongo.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Mishkovec/Node_Express_Mongo/issues"
+    },
+    "homepage": "https://github.com/Mishkovec/Node_Express_Mongo#readme",
+    "dependencies": {
+        "express": "^4.17.1",
+        "express-handlebars": "^5.2.0",
+        "nodemon": "^2.0.7"
+    }
 }
