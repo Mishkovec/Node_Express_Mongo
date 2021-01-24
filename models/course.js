@@ -3,20 +3,20 @@ const path = require('path')
 const fs = require('fs')
 
 class Course {
-    constructor(data) {
-        this.title = data.title
-        this.price = data.price
-        this.img = data.img
+    constructor(title, img, price) {
+        this.title = title
+        this.price = price
+        this.img = img
         this.id = uuid()
     }
 
     toJSON() {
-        return JSON.stringify({
+        return {
             title: this.title,
             price: this.price,
             id: this.id,
             img: this.img
-        })
+        }
     }
 
     async save() {
@@ -31,6 +31,7 @@ class Course {
                 JSON.stringify(courses),
                 (err) => {
                     if (err) {
+                        console.log(err)
                         rej(err)
                     } else {
                         res()
