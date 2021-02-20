@@ -24,7 +24,7 @@ class Cart {
 
         cart.price += +course.price
 
-        console.log(cart)
+        // console.log(cart)
 
         return new Promise((res, rej) => {
             fs.writeFile(p, JSON.stringify(cart), err => {
@@ -44,6 +44,31 @@ class Cart {
                     rej(err)
                 } else {
                     res(JSON.parse(content))
+                }
+            })
+        })
+    }
+
+    static async remove(id) {
+        const cart = await Cart.fetch()
+
+        const idx = cart.courses.findIndex(c => c.id === id)
+        const course = cart.courses[idx]
+
+        if (course.count == 1) {
+            cart.courses = cart.courses.filter(c => c.id !== id)
+        } else {
+            cart.courses[idx].count--
+        }
+
+        cart.price -= course.price
+
+        return new Promise((res, rej) => {
+            fs.writeFile(p, JSON.stringify(cart), err => {
+                if (err) {
+                    rej(err)
+                } else {
+                    res(cart)
                 }
             })
         })
