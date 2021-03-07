@@ -1,5 +1,6 @@
 const express = require('express')
 const path = require('path')
+const mongoose = require('mongoose')
 const ehbs = require('express-handlebars')
 
 const app = express()
@@ -11,7 +12,11 @@ const cartRoute = require('./routes/cart')
 
 const hbs = ehbs.create({
     defaultLayout: 'main',
-    extname: 'hbs'
+    extname: 'hbs',
+    runtimeOptions: {
+        allowProtoPropertiesByDefault: true,
+        allowProtoMethodsByDefault: true
+    }
 })
 
 app.engine('hbs', hbs.engine)
@@ -29,6 +34,20 @@ app.use('/cart', cartRoute)
 
 const PORT = process.env.PORT || 3000
 
-app.listen(PORT, () => {
-    console.log('Running app')
-})
+async function start() {
+    try {
+        const url = `mongodb+srv://andrej:Hw7wHHZsqqirdD4A@cluster0.grhht.mongodb.net/shop`
+        await mongoose.connect(url, {
+            useNewUrlParser: true,
+            useFindAndModify: false,
+            useUnifiedTopology: true,
+        })
+        app.listen(PORT, () => {
+            console.log('Running app')
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+start()
