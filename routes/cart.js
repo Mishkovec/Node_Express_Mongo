@@ -1,8 +1,6 @@
 const { Router } = require('express')
 const Course = require('../models/course')
 
-
-
 function mapCartItems(cart) {
     return cart.items.map(c => ({
         ...c.courseId._doc,
